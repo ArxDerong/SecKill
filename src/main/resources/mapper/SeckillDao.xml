@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.arx.seckill.dao.SeckillDao">
-    <update id="reduceNumber" >
+    <update id="reduceNumber">
         UPDATE
             seckill
         SET
@@ -25,7 +25,7 @@
             create_time
         FROM
             seckill
-        LIMIT #{offset},#{limit};
+        LIMIT #{offset}, #{limit};
     </select>
     <select id="queryById" resultType="Seckill" parameterType="long">
 
@@ -39,7 +39,7 @@
         FROM
             seckill
         WHERE
-            seckill_id=#{seckillId};
+            seckill_id = #{seckillId};
     </select>
 
 </mapper>

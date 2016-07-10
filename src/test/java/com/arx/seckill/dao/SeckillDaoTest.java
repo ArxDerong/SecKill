@@ -20,6 +20,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:spring/spring-dao.xml"})
 public class SeckillDaoTest {
+
     //    注入Dao实现类依赖
     @Resource
     private SeckillDao seckillDao;
@@ -45,8 +46,7 @@ public class SeckillDaoTest {
     public void queryAll() throws Exception {
 
         List<Seckill> seckills = seckillDao.queryAll(0, 100);
-        for (Seckill seckill : seckills
-                ) {
+        for (Seckill seckill : seckills) {
             System.out.println(seckill);
         }
     }

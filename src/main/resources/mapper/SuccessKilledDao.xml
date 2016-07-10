@@ -25,7 +25,7 @@
             INNER JOIN seckill s ON s.seckill_id = sk.seckill_id
         WHERE
             sk.seckill_id = #{seckillId}
-        AND
+            AND
             sk.user_phone = #{userPhone}
 
     </select>
