@@ -2,8 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--配置整合spring mybatis过程-->
     <!--1)配置数据库相关参数-->
@@ -41,9 +43,9 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
         <property name="typeAliasesPackage" value="com.arx.seckill.entity"/>
         <!--扫描sql配置文件 mapper需要的xml-->
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
-        
+
     </bean>
-    
+
     <!--4:配置扫描Dao接口包，动态实现Dao接口，注入到spring 容器中-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--注入sqlSessionFactory-->
@@ -51,7 +53,6 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
         <!--给出需要扫描Dao接口包-->
         <property name="basePackage" value="com.arx.seckill.dao"/>
     </bean>
-
 
 
 </beans>
