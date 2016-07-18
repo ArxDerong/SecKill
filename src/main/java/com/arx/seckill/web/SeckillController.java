@@ -24,19 +24,18 @@ import java.util.List;
  * derong218@qq.com
  */
 @Controller//@Service @Component
-@RequestMapping("seckill")
+@RequestMapping("/seckill")
 public class SeckillController {
     private Logger logger = LoggerFactory.getLogger(SeckillController.class);
     @Autowired
     private SeckillService seckillService;
 
-    @RequestMapping(name = "/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) {
         //获取列表
         List<Seckill> list = seckillService.getSeckillList();
 
         model.addAttribute("list", list);
-
         //list.jsp +model=ModelAndView
         return "list";//WEB-INF/jsp/list.jsp;
 
