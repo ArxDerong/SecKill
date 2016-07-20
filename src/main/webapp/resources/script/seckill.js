@@ -2,11 +2,15 @@
 //javascript 模块化
 var seckill = {
     //封装秒杀相关ajax的url
-    URL: {},
+    URL: {
+
+        now:function () {
+            return '/seckill/time/now';
+        }
+
+    },
     validatePhone: function (phone) {
-        var newVar = phone && phone.length == 11 && !isNaN(phone);
-        alert(newVar);
-        return newVar;
+        return phone && phone.length == 11 && !isNaN(phone);
     },
     //详情页秒杀逻辑
     detail: {
@@ -27,24 +31,30 @@ var seckill = {
                     backdrop: 'static',//禁止位置关闭
                     keyboard: false//关闭键盘事件
                 });
-                // jQuery.noConflict();
-                // (function ($) {
-                //         killPhoneModal.modal('show');
-                //     }
-                // )(jQuery);
-                $('#killPhoneBtn').click(function (){
+                $('#killPhoneBtn').click(function () {
                     var inputPhone = $('#killPhoneKey').val();
-                    if (seckillId.validatePhone(inputPhone)) {
+                    if (seckill.validatePhone(inputPhone)) {
                         // 电话写入cookie
                         $.cookie('killPhone', inputPhone, {expires: 7, path: '/seckill'});
                         //刷新页面
                         window.location.reload();
                     } else {
-                        $('#killPhoneMessage').hide().html('<label class="label-danger" >手机号错误</label>').show(300);
+                        $('#killPhoneMessage').hide().html('<label class="label label-danger" >手机号错误</label>').show(300);
                     }
                 });
             }
             //已经登录
+            //倒计时交互
+
+            $.get(seckill.URL.now(),{},function (result) {
+                if(result&&result['success']){
+                    var  nowTime =result['data'];
+                    //时间判断
+
+                }else{
+                    console.log('result:'+result);
+                }
+            })
         }
 
     }

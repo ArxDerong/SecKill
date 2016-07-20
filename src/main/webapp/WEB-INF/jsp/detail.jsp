@@ -1,8 +1,6 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="common/tags.jsp" %>
+<%--<%@include file="common/tags.jsp" %>--%>
 <!DOCTYPE html>
-
 <html>
 <head>
     <title>秒杀详情页</title>
@@ -31,7 +29,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title text-center">
-                    <span class="glyphicon glyphicon-phone"></span>
+                    <span class="glyphicon glyphicon-phone"></span>秒杀电话:
                 </h3>
             </div>
             <div class="modal-body">
@@ -44,11 +42,10 @@
             </div>
             <div class="modal-footer">
                 <%--验证信息--%>
-                    <span id="killPhoneMessage" class="glyphicon">
-                        <button type="button" id="killPhoneBtn" class="btn btn-success">
-                            <span class="glyphicon glyphicon-phone"></span>
-                        </button>
-                    </span>
+                <span id="killPhoneMessage" class="glyphicon"></span>
+                <button type="button" id="killPhoneBtn" class="btn btn-success">
+                    <span class="glyphicon glyphicon-phone"></span>Submit
+                </button>
             </div>
         </div>
     </div>
