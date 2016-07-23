@@ -77,8 +77,9 @@ public class SeckillController {
     }
 
     @RequestMapping(value = "/{seckillId}/{md5}/execution",
-            method = RequestMethod.GET,
+            method = RequestMethod.POST,
             produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
     public SeckillResult<SeckillExecution> execution(
             @PathVariable(value = "seckillId") Long seckillId,
             @PathVariable(value = "md5") String md5,
@@ -94,16 +95,16 @@ public class SeckillController {
             return new SeckillResult<SeckillExecution>(true, execution);
         }  catch (RepeatKillException e) {
             SeckillExecution seckillExecution = new SeckillExecution(seckillId, SeckillStateEnum.REPEAT_KILL);
-            result = new SeckillResult<SeckillExecution>(false, seckillExecution);
+            result = new SeckillResult<SeckillExecution>(true, seckillExecution);
         }
         catch (SeckillCloseException e) {
             SeckillExecution seckillExecution = new SeckillExecution(seckillId, SeckillStateEnum.END);
-            result = new SeckillResult<SeckillExecution>(false, seckillExecution);
+            result = new SeckillResult<SeckillExecution>(true, seckillExecution);
         }
         catch (SeckillException e) {
             logger.error(e.getMessage(), e);
             SeckillExecution seckillExecution = new SeckillExecution(seckillId, SeckillStateEnum.INNER_ERROR);
-            result = new SeckillResult<SeckillExecution>(false, seckillExecution);
+            result = new SeckillResult<SeckillExecution>(true, seckillExecution);
         }
 
         return result;
@@ -112,6 +113,7 @@ public class SeckillController {
     @RequestMapping(value = "/time/now",
             method = RequestMethod.GET,
             produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
     public SeckillResult<Long> time(){
         Date date = new Date();
         return new SeckillResult<Long>(true,date.getTime());
